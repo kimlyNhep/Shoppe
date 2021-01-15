@@ -77,7 +77,7 @@ public class CategoryController {
             throw new SpResourceNotFoundException(e.getMessage());
         } catch (Exception e) {
             Map<String, String> map = new HashMap<>();
-            map.put("Error", "This category is used");
+            map.put("message", "This category is used");
             return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
         }
     }

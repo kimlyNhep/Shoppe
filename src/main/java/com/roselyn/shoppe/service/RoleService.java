@@ -30,7 +30,9 @@ public class RoleService {
         if (count > 0) throw new SpBadRequestException("Role already exist");
 
         Integer roleId = roleRepository.save(role).getId();
-        return roleRepository.findById(roleId).orElseThrow();
+        Optional<Role> newRole = roleRepository.findById(roleId);
+        assert newRole.isPresent();
+        return newRole.get();
     }
 
     public List<Role> getRolesByUserId(Integer uid) throws SpResourceNotFoundException {

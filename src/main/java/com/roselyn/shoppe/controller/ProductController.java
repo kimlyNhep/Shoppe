@@ -28,7 +28,7 @@ public class ProductController {
     public ResponseEntity<Map<String, Integer>> createProduct(@RequestBody Map<String, Object> productMap) {
         String productName = (String) productMap.get("productName");
         String description = (String) productMap.get("description");
-        Double price = (Double) productMap.get("price");
+        Double price = Double.parseDouble(productMap.get("price").toString());
         Integer categoryId = (Integer) productMap.get("categoryId");
 
         Integer productId = productService.createProduct(new Product(productName, description, price), categoryId);
